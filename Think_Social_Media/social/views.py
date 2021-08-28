@@ -4,6 +4,7 @@ from .models import Post
 from .forms import PostForm
 
 class PostListView(View):
+    
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('-created_on')
         form = PostForm()
@@ -13,6 +14,8 @@ class PostListView(View):
             'form': form,
         }
         return render(request, 'social/post_list.html', context)
+
+
 
     def post(self, request,*args, **kwargs):
         posts = Post.objects.all().order_by('-created_on')
@@ -29,3 +32,5 @@ class PostListView(View):
         }
         return render(request, 'social/post_list.html', context)
 
+
+        
