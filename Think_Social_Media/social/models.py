@@ -6,3 +6,17 @@ class Post(models.Model):
     body = models.TextField()
     created_on = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class Comment(models.Model):
+    comment = models.TextField()
+    created_on = models.DateTimeField(default=timezone.now)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, primary_key=True, verbose_name='user', related_name='profile', on_delete=models.CASCADE)
+    name = models.CharField(max_length=30, blank=True, null=True)
+    birth_date = models.DateTimeField(null=True, blank=True)
+    location = models.CharField(max_length=100, blank=True, null=True)
+    picture = models.ImageField(upload_to='uploads/profile_picture', default='uploads/profile_picture/Anonymous.jpg')
+
