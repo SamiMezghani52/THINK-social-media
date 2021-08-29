@@ -18,5 +18,5 @@ class UserProfile(models.Model):
     name = models.CharField(max_length=30, blank=True, null=True)
     birth_date = models.DateTimeField(null=True, blank=True)
     location = models.CharField(max_length=100, blank=True, null=True)
-    picture = models.ImageField(upload_to='uploads/profile_picture', default='uploads/profile_picture/Anonymous.jpg')
+    picture = models.ImageField(upload_to='uploads/profile_pictures', default='uploads/profile_pictures/Anonymous.jpg', blank=True)
 
